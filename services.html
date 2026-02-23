@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Услуги - Okna Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="page">
+        <header class="header">
+            <div class="container">
+                <nav class="nav">
+                    <div class="nav-left">
+                        <a href="/catalog" class="nav-btn">Каталог</a>
+                        <a href="/services" class="nav-btn active">Услуги</a>
+                    </div>
+
+                    <div class="logo">
+                        <a href="/">
+                            <img src="images/logo.png" alt="Okna Store">
+                        </a>
+                    </div>
+
+                    <div class="nav-right">
+                        <a href="/calculator" class="nav-btn">Расчёт</a>
+                        <a href="/contacts" class="nav-btn">Контакты</a>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <section class="services">
+                <div class="container">
+                    <h1 class="page-title">Наши услуги</h1>
+
+                    <div class="services-grid">
+                        <!-- Замер -->
+                        <div class="service-card">
+                            <div class="service-icon">📏</div>
+                            <h2 class="service-title">Бесплатный замер</h2>
+                            <p class="service-desc">Наш специалист приедет в удобное время, произведёт все необходимые замеры и поможет с выбором</p>
+                            <button class="service-btn" onclick="showOrderForm('замер')">Вызвать замерщика</button>
+                        </div>
+
+                        <!-- Установка -->
+                        <div class="service-card">
+                            <div class="service-icon">🔧</div>
+                            <h2 class="service-title">Профессиональный монтаж</h2>
+                            <p class="service-desc">Установка окон любой сложности с гарантией до 5 лет. Работаем аккуратно и в срок</p>
+                            <button class="service-btn" onclick="showOrderForm('установка')">Заказать установку</button>
+                        </div>
+
+                        <!-- Доставка -->
+                        <div class="service-card">
+                            <div class="service-icon">🚚</div>
+                            <h2 class="service-title">Доставка</h2>
+                            <p class="service-desc">Бережная доставка окон и комплектующих. Подъём на этаж включён в стоимость</p>
+                            <button class="service-btn" onclick="showOrderForm('доставка')">Заказать доставку</button>
+                        </div>
+
+                        <!-- Гарантия -->
+                        <div class="service-card">
+                            <div class="service-icon">⭐</div>
+                            <h2 class="service-title">Гарантийное обслуживание</h2>
+                            <p class="service-desc">Регулировка и ремонт окон. Бесплатное обслуживание в гарантийный период</p>
+                            <button class="service-btn" onclick="showOrderForm('обслуживание')">Вызвать мастера</button>
+                        </div>
+                    </div>
+
+                    <!-- Преимущества -->
+                    <div class="advantages">
+                        <h2 class="section-title">Почему выбирают нас</h2>
+                        <div class="advantages-grid">
+                            <div class="advantage-item">
+                                <div class="advantage-number">01</div>
+                                <h3>15 лет опыта</h3>
+                                <p>Более 5000 установленных окон</p>
+                            </div>
+                            <div class="advantage-item">
+                                <div class="advantage-number">02</div>
+                                <h3>Своё производство</h3>
+                                <p>Контроль качества на всех этапах</p>
+                            </div>
+                            <div class="advantage-item">
+                                <div class="advantage-number">03</div>
+                                <h3>Экологичные материалы</h3>
+                                <p>Только сертифицированные профили</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Форма заявки -->
+            <section class="order-form" id="order-form" style="display: none;">
+                <div class="container">
+                    <div class="order-card">
+                        <h2 class="order-title">Оставьте заявку</h2>
+                        <p class="order-subtitle" id="service-type-text">на услугу</p>
+
+                        <form id="service-form" class="contact-form">
+                            <input type="hidden" id="service-type" value="">
+                            <div class="form-row">
+                                <input type="text" id="name" class="form-input" placeholder="Ваше имя" required>
+                            </div>
+                            <div class="form-row">
+                                <input type="tel" id="phone" class="form-input" placeholder="Телефон" required>
+                            </div>
+                            <div class="form-row">
+                                <input type="text" id="address" class="form-input" placeholder="Адрес (необязательно)">
+                            </div>
+                            <button type="submit" class="submit-btn">Отправить заявку</button>
+                            <button type="button" class="close-btn" onclick="hideOrderForm()">×</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-info">
+                        <p>© 2024 Okna Store</p>
+                        <p>г. Москва, ул. Строителей, 15</p>
+                    </div>
+                    <div class="footer-phone">
+                        <a href="tel:+74951234567">+7 (495) 123-45-67</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/services.js"></script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог окон - Okna Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="page">
+        <header class="header">
+            <div class="container">
+                <nav class="nav">
+                    <div class="nav-left">
+                        <a href="/catalog" class="nav-btn active">Каталог</a>
+                        <a href="/services" class="nav-btn">Услуги</a>
+                    </div>
+
+                    <div class="logo">
+                        <a href="/">
+                            <img src="images/logo.png" alt="Okna Store">
+                        </a>
+                    </div>
+
+                    <div class="nav-right">
+                        <a href="/calculator" class="nav-btn">Расчёт</a>
+                        <a href="/contacts" class="nav-btn">Контакты</a>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <!-- Заголовок каталога -->
+            <section class="catalog-header">
+                <div class="container">
+                    <h1 class="page-title">Каталог окон</h1>
+                    <p class="page-subtitle">Выберите идеальное окно для вашего дома</p>
+                </div>
+            </section>
+
+            <!-- Фильтры каталога -->
+            <section class="filters">
+                <div class="container">
+                    <div class="filters-grid">
+                        <div class="filter-group">
+                            <label class="filter-label">Тип окна</label>
+                            <div class="filter-options">
+                                <label class="filter-checkbox">
+                                    <input type="checkbox" name="type" value="plastic" checked> Пластиковые
+                                </label>
+                                <label class="filter-checkbox">
+                                    <input type="checkbox" name="type" value="wood"> Деревянные
+                                </label>
+                                <label class="filter-checkbox">
+                                    <input type="checkbox" name="type" value="aluminum"> Алюминиевые
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="filter-group">
+                            <label class="filter-label">Цвет</label>
+                            <div class="filter-options">
+                                <label class="filter-checkbox">
+                                    <input type="checkbox" name="color" value="white"> Белые
+                                </label>
+                                <label class="filter-checkbox">
+                                    <input type="checkbox" name="color" value="brown"> Коричневые
+                                </label>
+                                <label class="filter-checkbox">
+                                    <input type="checkbox" name="color" value="black"> Чёрные
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="filter-group">
+                            <label class="filter-label">Цена</label>
+                            <div class="price-range">
+                                <input type="range" id="price-min" class="price-slider" min="0" max="50000" step="1000" value="0">
+                                <input type="range" id="price-max" class="price-slider" min="0" max="50000" step="1000" value="50000">
+                                <div class="price-values">
+                                    <span>от <span id="min-price">0</span> ₽</span>
+                                    <span>до <span id="max-price">50000</span> ₽</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Сетка товаров -->
+            <section class="catalog-products">
+                <div class="container">
+                    <div class="catalog-grid" id="catalog-grid">
+                        <!-- Товары будут загружаться через JS -->
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-info">
+                        <p>© 2024 Okna Store</p>
+                        <p>г. Москва, ул. Строителей, 15</p>
+                    </div>
+                    <div class="footer-phone">
+                        <a href="tel:+74951234567">+7 (495) 123-45-67</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/catalog.js"></script>
+</body>
+</html>

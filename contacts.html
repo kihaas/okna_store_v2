@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - Okna Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="page">
+        <header class="header">
+            <div class="container">
+                <nav class="nav">
+                    <div class="nav-left">
+                        <a href="/catalog" class="nav-btn">Каталог</a>
+                        <a href="/services" class="nav-btn">Услуги</a>
+                    </div>
+
+                    <div class="logo">
+                        <a href="/">
+                            <img src="images/logo.png" alt="Okna Store">
+                        </a>
+                    </div>
+
+                    <div class="nav-right">
+                        <a href="/calculator" class="nav-btn">Расчёт</a>
+                        <a href="/contacts" class="nav-btn active">Контакты</a>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <section class="contacts">
+                <div class="container">
+                    <h1 class="page-title">Контакты</h1>
+
+                    <div class="contacts-grid">
+                        <!-- Информация -->
+                        <div class="contacts-info">
+                            <div class="info-card">
+                                <h2>Офис продаж</h2>
+                                <p class="info-address">📍 г. Москва, ул. Строителей, 15</p>
+                                <p class="info-phone">📞 <a href="tel:+74951234567">+7 (495) 123-45-67</a></p>
+                                <p class="info-email">✉️ <a href="mailto:info@oknastore.ru">info@oknastore.ru</a></p>
+                                <p class="info-time">🕒 Пн-Пт: 9:00 - 20:00<br>Сб-Вс: 10:00 - 18:00</p>
+                            </div>
+
+                            <div class="info-card">
+                                <h2>Реквизиты</h2>
+                                <p>ООО "Окна Стор"</p>
+                                <p>ИНН 1234567890</p>
+                                <p>ОГРН 1234567890123</p>
+                            </div>
+                        </div>
+
+                        <!-- Форма обратной связи -->
+                        <div class="contacts-form">
+                            <h2>Напишите нам</h2>
+                            <form id="contacts-form" class="contact-form">
+                                <div class="form-row">
+                                    <input type="text" id="name" class="form-input" placeholder="Ваше имя" required>
+                                </div>
+                                <div class="form-row">
+                                    <input type="tel" id="phone" class="form-input" placeholder="Телефон" required>
+                                </div>
+                                <div class="form-row">
+                                    <input type="email" id="email" class="form-input" placeholder="Email (необязательно)">
+                                </div>
+                                <div class="form-row">
+                                    <textarea id="message" class="form-textarea" placeholder="Сообщение" rows="4" required></textarea>
+                                </div>
+                                <button type="submit" class="submit-btn">Отправить сообщение</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-info">
+                        <p>© 2024 Okna Store</p>
+                        <p>г. Москва, ул. Строителей, 15</p>
+                    </div>
+                    <div class="footer-phone">
+                        <a href="tel:+74951234567">+7 (495) 123-45-67</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/contacts.js"></script>
+</body>
+</html>

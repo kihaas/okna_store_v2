@@ -1,0 +1,382 @@
+/* Стили для админ-панели */
+
+/* Контейнер админки */
+.admin-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Боковое меню */
+.admin-sidebar {
+    width: 280px;
+    background: white;
+    padding: 30px 20px;
+    border-right: 2px solid var(--bg-color, #EBEFEE);
+}
+
+.admin-logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--accent, #46B2FF);
+    margin-bottom: 40px;
+    padding-left: 10px;
+}
+
+.admin-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.admin-nav-item {
+    padding: 12px 20px;
+    border-radius: 100px;
+    color: var(--text, #1A1A1A);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.admin-nav-item:hover {
+    background: var(--bg-color, #EBEFEE);
+}
+
+.admin-nav-item.active {
+    background: var(--accent, #46B2FF);
+    color: white;
+}
+
+/* Основной контент */
+.admin-content {
+    flex: 1;
+    padding: 40px;
+    background: var(--bg-color, #EBEFEE);
+}
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.admin-title {
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.admin-logout {
+    background: none;
+    border: 2px solid var(--accent, #46B2FF);
+    color: var(--accent, #46B2FF);
+    padding: 10px 25px;
+    border-radius: 100px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.admin-logout:hover {
+    background: var(--accent, #46B2FF);
+    color: white;
+}
+
+/* Карточки статистики */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.stat-card {
+    background: white;
+    border-radius: 40px;
+    padding: 25px;
+}
+
+.stat-title {
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.stat-value {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--accent, #46B2FF);
+    margin-bottom: 5px;
+}
+
+.stat-desc {
+    color: #999;
+    font-size: 14px;
+}
+
+/* Таблицы */
+.admin-table {
+    background: white;
+    border-radius: 40px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.table-title {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.add-btn {
+    background: var(--accent, #46B2FF);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 100px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.add-btn:hover {
+    opacity: 0.9;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    text-align: left;
+    padding: 15px 10px;
+    border-bottom: 2px solid var(--bg-color, #EBEFEE);
+    color: #666;
+    font-weight: 600;
+}
+
+td {
+    padding: 15px 10px;
+    border-bottom: 1px solid var(--bg-color, #EBEFEE);
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+.status-badge {
+    background: #e8f5e9;
+    color: #2e7d32;
+    padding: 5px 12px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 0 5px;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+.action-btn:hover {
+    opacity: 1;
+}
+
+.edit-btn { color: var(--accent, #46B2FF); }
+.delete-btn { color: #f44336; }
+
+/* Модальное окно */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 40px;
+    padding: 40px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.modal-close {
+    float: right;
+    font-size: 28px;
+    cursor: pointer;
+    color: #999;
+}
+
+.modal-close:hover {
+    color: var(--text, #1A1A1A);
+}
+
+/* Формы в админке */
+.admin-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #666;
+}
+
+.admin-input {
+    padding: 12px;
+    border: 2px solid var(--bg-color, #EBEFEE);
+    border-radius: 24px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+}
+
+.admin-input:focus {
+    outline: none;
+    border-color: var(--accent, #46B2FF);
+}
+
+.save-btn {
+    background: var(--accent, #46B2FF);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Стили для страницы входа */
+.login-container {
+    background: white;
+    border-radius: 40px;
+    padding: 60px;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+}
+
+.login-logo {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--accent, #46B2FF);
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.login-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.login-subtitle {
+    color: #666;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.login-input {
+    padding: 15px;
+    border: 2px solid var(--bg-color, #EBEFEE);
+    border-radius: 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    transition: border-color 0.2s;
+}
+
+.login-input:focus {
+    outline: none;
+    border-color: var(--accent, #46B2FF);
+}
+
+.login-btn {
+    background: var(--accent, #46B2FF);
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: opacity 0.2s;
+}
+
+.login-btn:hover {
+    opacity: 0.9;
+}
+
+.error-message {
+    color: #f44336;
+    font-size: 14px;
+    text-align: center;
+    min-height: 20px;
+}
+
+.demo-hint {
+    margin-top: 30px;
+    padding: 20px;
+    background: var(--bg-color, #EBEFEE);
+    border-radius: 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+.demo-hint p {
+    margin-bottom: 5px;
+}
+
+.demo-hint code {
+    background: white;
+    padding: 2px 8px;
+    border-radius: 8px;
+    font-weight: 600;
+}

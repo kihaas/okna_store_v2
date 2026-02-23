@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ-панель - Okna Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* Специальные стили для админки */
+        .admin-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Боковое меню */
+        .admin-sidebar {
+            width: 280px;
+            background: white;
+            padding: 30px 20px;
+            border-right: 2px solid var(--bg-color);
+        }
+
+        .admin-logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 40px;
+            padding-left: 10px;
+        }
+
+        .admin-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .admin-nav-item {
+            padding: 12px 20px;
+            border-radius: 100px;
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .admin-nav-item:hover {
+            background: var(--bg-color);
+        }
+
+        .admin-nav-item.active {
+            background: var(--accent);
+            color: white;
+        }
+
+        /* Основной контент */
+        .admin-content {
+            flex: 1;
+            padding: 40px;
+            background: var(--bg-color);
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .admin-title {
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        .admin-logout {
+            background: none;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            padding: 10px 25px;
+            border-radius: 100px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .admin-logout:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        /* Карточки статистики */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            padding: 25px;
+        }
+
+        .stat-title {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .stat-value {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+
+        .stat-desc {
+            color: #999;
+            font-size: 14px;
+        }
+
+        /* Таблицы */
+        .admin-table {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .table-title {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .add-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 100px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .add-btn:hover {
+            opacity: 0.9;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            text-align: left;
+            padding: 15px 10px;
+            border-bottom: 2px solid var(--bg-color);
+            color: #666;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 15px 10px;
+            border-bottom: 1px solid var(--bg-color);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .status-badge {
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 5px 12px;
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .action-btn {
+            background: none;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            margin: 0 5px;
+            opacity: 0.6;
+            transition: opacity 0.2s;
+        }
+
+        .action-btn:hover {
+            opacity: 1;
+        }
+
+        .edit-btn { color: var(--accent); }
+        .delete-btn { color: #f44336; }
+
+        /* Модальное окно */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            padding: 40px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .modal-close {
+            float: right;
+            font-size: 28px;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .modal-close:hover {
+            color: var(--text);
+        }
+
+        /* Формы в админке */
+        .admin-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: #666;
+        }
+
+        .admin-input {
+            padding: 12px;
+            border: 2px solid var(--bg-color);
+            border-radius: var(--border-radius-md);
+            font-family: var(--font-main);
+            font-size: 16px;
+        }
+
+        .admin-input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .save-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Боковое меню -->
+        <aside class="admin-sidebar">
+            <div class="admin-logo">Okna Store</div>
+            <nav class="admin-nav">
+                <a href="#" class="admin-nav-item active" onclick="showSection('dashboard')">📊 Дашборд</a>
+                <a href="#" class="admin-nav-item" onclick="showSection('orders')">📦 Заявки</a>
+                <a href="#" class="admin-nav-item" onclick="showSection('windows')">🪟 Товары</a>
+                <a href="#" class="admin-nav-item" onclick="showSection('stats')">📈 Статистика</a>
+                <a href="#" class="admin-nav-item" onclick="showSection('settings')">⚙️ Настройки</a>
+            </nav>
+        </aside>
+
+        <!-- Основной контент -->
+        <main class="admin-content">
+            <div class="admin-header">
+                <h1 class="admin-title" id="current-section">Дашборд</h1>
+                <button class="admin-logout" onclick="logout()">Выйти</button>
+            </div>
+
+            <!-- Секция Дашборд -->
+            <div id="dashboard-section" class="section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-title">Заявок сегодня</div>
+                        <div class="stat-value" id="today-orders">3</div>
+                        <div class="stat-desc">+2 за вчера</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-title">Всего заявок</div>
+                        <div class="stat-value" id="total-orders">127</div>
+                        <div class="stat-desc">за всё время</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-title">Товаров в каталоге</div>
+                        <div class="stat-value" id="total-products">6</div>
+                        <div class="stat-desc">3 категории</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-title">Просмотров сегодня</div>
+                        <div class="stat-value" id="today-views">234</div>
+                        <div class="stat-desc">на 15% больше</div>
+                    </div>
+                </div>
+
+                <!-- Последние заявки -->
+                <div class="admin-table">
+                    <div class="table-header">
+                        <h2 class="table-title">Последние заявки</h2>
+                        <button class="add-btn" onclick="showSection('orders')">Все заявки →</button>
+                    </div>
+                    <table id="recent-orders-table">
+                        <thead>
+                            <tr>
+                                <th>Дата</th>
+                                <th>Имя</th>
+                                <th>Телефон</th>
+                                <th>Услуга</th>
+                                <th>Статус</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Заполняется через JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Секция Заявки -->
+            <div id="orders-section" class="section" style="display: none;">
+                <div class="admin-table">
+                    <div class="table-header">
+                        <h2 class="table-title">Все заявки</h2>
+                    </div>
+                    <table id="all-orders-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Дата</th>
+                                <th>Имя</th>
+                                <th>Телефон</th>
+                                <th>Email</th>
+                                <th>Услуга</th>
+                                <th>Статус</th>
+                                <th>Действия</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Заполняется через JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Секция Товары -->
+            <div id="windows-section" class="section" style="display: none;">
+                <div class="admin-table">
+                    <div class="table-header">
+                        <h2 class="table-title">Управление товарами</h2>
+                        <button class="add-btn" onclick="openAddProductModal()">➕ Добавить товар</button>
+                    </div>
+                    <table id="products-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Изображение</th>
+                                <th>Название</th>
+                                <th>Тип</th>
+                                <th>Цвет</th>
+                                <th>Цена</th>
+                                <th>Действия</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Заполняется через JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Секция Статистика -->
+            <div id="stats-section" class="section" style="display: none;">
+                <div class="admin-table">
+                    <h2 class="table-title">Статистика заказов</h2>
+                    <canvas id="stats-chart" style="width:100%; height:400px; margin-top:20px;"></canvas>
+                </div>
+            </div>
+
+            <!-- Секция Настройки -->
+            <div id="settings-section" class="section" style="display: none;">
+                <div class="admin-table">
+                    <h2 class="table-title">Настройки сайта</h2>
+                    <form class="admin-form" onsubmit="saveSettings(event)">
+                        <div class="form-group">
+                            <label>Название компании</label>
+                            <input type="text" class="admin-input" id="company-name" value="Okna Store">
+                        </div>
+                        <div class="form-group">
+                            <label>Телефон</label>
+                            <input type="text" class="admin-input" id="company-phone" value="+7 (495) 123-45-67">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" class="admin-input" id="company-email" value="info@oknastore.ru">
+                        </div>
+                        <div class="form-group">
+                            <label>Адрес</label>
+                            <input type="text" class="admin-input" id="company-address" value="г. Москва, ул. Строителей, 15">
+                        </div>
+                        <button type="submit" class="save-btn">Сохранить настройки</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Модальное окно для добавления/редактирования товара -->
+    <div class="modal" id="product-modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeProductModal()">&times;</span>
+            <h2 class="modal-title" id="modal-title">Добавить товар</h2>
+            <form class="admin-form" onsubmit="saveProduct(event)">
+                <input type="hidden" id="product-id">
+
+                <div class="form-group">
+                    <label>Название товара</label>
+                    <input type="text" class="admin-input" id="product-title" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Тип окна</label>
+                    <select class="admin-input" id="product-type" required>
+                        <option value="plastic">Пластиковое</option>
+                        <option value="wood">Деревянное</option>
+                        <option value="aluminum">Алюминиевое</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Цвет</label>
+                    <select class="admin-input" id="product-color" required>
+                        <option value="white">Белый</option>
+                        <option value="brown">Коричневый</option>
+                        <option value="black">Чёрный</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Цена (₽)</label>
+                    <input type="number" class="admin-input" id="product-price" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Описание</label>
+                    <textarea class="admin-input" id="product-desc" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Ссылка на изображение</label>
+                    <input type="text" class="admin-input" id="product-image" value="images/window-1.jpg">
+                </div>
+
+                <button type="submit" class="save-btn">Сохранить</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/admin.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>

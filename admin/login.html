@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход в админ-панель</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #EBEFEE 0%, #d5e0de 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-logo">Okna Store</div>
+        <h1 class="login-title">Вход в админку</h1>
+        <p class="login-subtitle">Управление заявками и товарами</p>
+
+        <form class="login-form" onsubmit="handleLogin(event)">
+            <div class="form-group">
+                <label>Логин</label>
+                <input type="text" id="username" class="login-input" placeholder="admin" value="admin">
+            </div>
+
+            <div class="form-group">
+                <label>Пароль</label>
+                <input type="password" id="password" class="login-input" placeholder="••••••••" value="admin123">
+            </div>
+
+            <div class="error-message" id="login-error"></div>
+
+            <button type="submit" class="login-btn">Войти</button>
+        </form>
+
+        <div class="demo-hint">
+            <p>🔐 Для демо используйте:</p>
+            <p>Логин: <code>admin</code></p>
+            <p>Пароль: <code>admin123</code></p>
+        </div>
+    </div>
+
+    <script>
+        function handleLogin(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorElement = document.getElementById('login-error');
+
+            if (username === 'admin' && password === 'admin123') {
+                localStorage.setItem('adminLoggedIn', 'true');
+                localStorage.setItem('adminName', username);
+                window.location.href = 'index.html';
+            } else {
+                errorElement.textContent = 'Неверный логин или пароль';
+            }
+        }
+
+        if (localStorage.getItem('adminLoggedIn') === 'true') {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
