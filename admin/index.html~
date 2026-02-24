@@ -306,7 +306,7 @@
                 <a href="#" class="admin-nav-item" onclick="showSection('orders')">Заявки</a>
                 <a href="#" class="admin-nav-item" onclick="showSection('windows')">Товары</a>
                 <a href="#" class="admin-nav-item" onclick="showSection('stats')">Статистика</a>
-                <a href="#" class="admin-nav-item" onclick="showSection('settings')">Настройки</a>
+                <a href="#" class="admin-nav-item" onclick="showSection('settings')">⚙Настройки</a>
             </nav>
         </aside>
 

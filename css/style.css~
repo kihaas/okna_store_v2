@@ -187,7 +187,6 @@ body {
 
 .promo-block {
     position: absolute;
-    right: 0px; /* Теперь работает! */
     top: 230px; /* Подвинь как хочешь */
     background: var(--accent);
     border-radius: 74px;

@@ -42,7 +42,7 @@ const products = [
         type: "plastic",
         color: "black",
         price: 21900,
-        image: "images/window-4.png",
+        image: "images/window-5.png",
         description: "Современный дизайн, 6 камер"
     },
     {
