@@ -43,11 +43,12 @@ body {
     align-items: center;
     justify-content: space-between;
     gap: 40px;
+    padding: 2%;
 }
 
 .nav-left, .nav-right {
     display: flex;
-    gap: 12px;
+    gap: 100px;
 }
 
 .nav-btn {
@@ -78,7 +79,6 @@ body {
 
 /* ========== ПЕРВЫЙ ЭКРАН (исправленный) ========== */
 .hero {
-    padding: 60px 0;
     position: relative;
     overflow: hidden;
 }
@@ -88,7 +88,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    min-height: 600px;
+    min-height: 450px;
 }
 
 /* Белый контейнер для фото */
@@ -104,7 +104,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+
 }
 
 /* Блок с фото */
@@ -154,7 +154,7 @@ body {
 .hero-text {
     position: absolute;
     right: -10px;
-    top: 20%; /* Изменил с 50% на 30% чтобы поднять выше */
+    top: 30%;
     transform: translateY(-30%); /* Соответственно меняем transform */
     width: 600px;
     display: flex;
@@ -164,9 +164,10 @@ body {
 }
 
 .hero-title {
+    align-items: center;
     font-family: 'Inter', sans-serif;
     font-weight: 900;
-    font-size: 50px !important; /* Пиздатый большой шрифт */
+    font-size: 40px !important; /* Пиздатый большой шрифт */
     line-height: 1;
     color: var(--accent);
     margin-bottom: 10px;
@@ -178,7 +179,7 @@ body {
 .hero-subtitle {
     font-family: 'Inter', sans-serif;
     font-weight: 900;
-    font-size: 40px !important; /* Принудительно */
+    font-size: 30px !important; /* Принудительно */
     line-height: 1;
     color: var(--text);
     margin-bottom: 30px;
@@ -187,22 +188,21 @@ body {
 
 .promo-block {
     position: absolute;
-    right: 0px; /* Теперь работает! */
-    top: 230px; /* Подвинь как хочешь */
+    right: 50px; /* Теперь работает! */
+
     background: var(--accent);
     border-radius: 74px;
-    padding: 0 30px;
+    padding: 0 40px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    width: 539px;
-    height: 56px;
+    justify-content: center;
+    height: 50px;
 }
 .promo-badge {
     color: white;
     font-family: 'Inter', sans-serif;
     font-weight: 900;
-    font-size: 32px;
+    font-size: 26px;
     line-height: 1;
     white-space: nowrap;
 }
@@ -215,8 +215,8 @@ body {
     background: linear-gradient(90deg, #0095FF 0%, #46B2FF 53%, #86CDFF 100%);
     color: white;
     text-decoration: none;
-    width: 233px;
-    height: 87px;
+    width: 200px;
+    height: 80px;
     border-radius: 62.5px;
     font-family: 'Inter', sans-serif;
     font-weight: 900;
@@ -225,8 +225,8 @@ body {
     margin-right: -30px;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    right: 190px;  /* Значение в пикселях, а не в процентах */
-    top: 300px;   /* Добавь и top чтобы двигать по вертикали */
+    right: 200px;  /* Значение в пикселях, а не в процентах */
+    top: 280px;   /* Добавь и top чтобы двигать по вертикали */
 }
 
 .promo-btn:hover {
@@ -235,14 +235,11 @@ body {
 }
 
 /* ========== КАТАЛОГ ========== */
-.catalog {
-    padding: 80px 0;
-}
 
 .section-title {
     font-size: 40px;
     font-weight: 700;
-    margin-bottom: 48px;
+    padding: 30px;
 }
 
 .catalog-grid {
@@ -784,8 +781,8 @@ body {
     }
 
     .promo-btn {
-        width: 180px;
-        height: 70px;
+        width: 150px;
+        height: 60px;
         font-size: 24px;
     }
 }
