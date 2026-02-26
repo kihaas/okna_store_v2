@@ -1,0 +1,159 @@
+/* ========== order-form.css ========== */
+/* Модальная форма заказа */
+
+.order-form {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;  /* Важно! По умолчанию скрыта */
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    margin: 0;
+    padding: 0;
+}
+
+.order-form.active {
+    display: flex;  /* Показываем когда есть класс active */
+}
+
+.order-card {
+    background: white;
+    border-radius: var(--border-radius-lg, 40px);
+    padding: 40px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    animation: modalFadeIn 0.3s ease;
+    margin: 20px;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.order-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--text, #1A1A1A);
+    padding-right: 30px; /* Чтобы не налезало на кнопку закрытия */
+}
+
+.order-subtitle {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 16px;
+}
+
+/* ===== КНОПКА ЗАКРЫТИЯ ===== */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 32px;
+    cursor: pointer;
+    color: #999;
+    line-height: 1;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+.close-btn:hover {
+    color: var(--text, #1A1A1A);
+    background: rgba(0, 0, 0, 0.05);
+    transform: rotate(90deg);
+}
+
+/* Форма внутри карточки */
+.order-card .contact-form {
+    width: 100%;
+}
+
+.order-card .form-row {
+    margin-bottom: 20px;
+}
+
+.order-card .form-input,
+.order-card .form-textarea {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid var(--bg-color, #EBEFEE);
+    border-radius: var(--border-radius-md, 24px);
+    font-family: var(--font-main, 'Inter', sans-serif);
+    font-size: 16px;
+    transition: border-color 0.2s;
+    background: white;
+}
+
+.order-card .form-input:focus,
+.order-card .form-textarea:focus {
+    outline: none;
+    border-color: var(--accent, #46B2FF);
+}
+
+.order-card .form-textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.order-card .submit-btn {
+    background: var(--accent, #46B2FF);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    transition: opacity 0.2s;
+}
+
+.order-card .submit-btn:hover {
+    opacity: 0.9;
+}
+
+/* Затемнение фона при открытой форме */
+body.modal-open {
+    overflow: hidden;
+}
+
+@media (max-width: 480px) {
+    .order-card {
+        padding: 30px 20px;
+        width: 95%;
+    }
+
+    .order-title {
+        font-size: 24px;
+    }
+
+    .close-btn {
+        top: 15px;
+        right: 15px;
+        width: 35px;
+        height: 35px;
+        font-size: 28px;
+    }
+}

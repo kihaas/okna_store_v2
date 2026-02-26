@@ -114,8 +114,7 @@
 
             <!-- Форма заявки (скрытая) -->
 <!-- Форма заявки - ПО УМОЛЧАНИЮ СКРЫТА -->
-<!-- Форма заявки - без inline style, скрыта через CSS -->
-<section class="order-form" id="order-form">
+<section class="order-form" id="order-form" style="display: none;">
     <div class="order-card">
         <button class="close-btn" id="close-order-form" aria-label="Закрыть">&times;</button>
         <h2 class="order-title">Оставьте заявку</h2>

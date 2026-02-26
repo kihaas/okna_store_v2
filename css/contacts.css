@@ -1,0 +1,123 @@
+/* ========== contacts.css ========== */
+/* Страница контактов */
+
+.contacts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin: 40px 0;
+}
+
+.contacts-info {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.info-card {
+    background: white;
+    border-radius: var(--border-radius-lg, 40px);
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.info-card h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--text, #1A1A1A);
+}
+
+.info-card p {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #666;
+}
+
+.info-card a {
+    color: var(--accent, #46B2FF);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.info-card a:hover {
+    text-decoration: underline;
+}
+
+/* Карта */
+.map-card {
+    background: white;
+    border-radius: var(--border-radius-lg, 40px);
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.map-card h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--text, #1A1A1A);
+}
+
+.map-placeholder {
+    background: var(--bg-color, #EBEFEE);
+    border-radius: var(--border-radius-md, 24px);
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    font-size: 18px;
+}
+
+/* Реквизиты */
+.requisites {
+    margin-top: 40px;
+}
+
+.requisites h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.requisites-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.requisite-item {
+    background: white;
+    border-radius: var(--border-radius-md, 24px);
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.requisite-item h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--accent, #46B2FF);
+}
+
+.requisite-item p {
+    color: #666;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .contacts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .requisites-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .map-placeholder {
+        height: 200px;
+    }
+}

@@ -1,0 +1,50 @@
+/* ========== base.css ========== */
+/* Основные переменные и базовые стили */
+
+:root {
+    --bg-color: #EBEFEE;
+    --accent: #46B2FF;
+    --text: #1A1A1A;
+    --white: #FFFFFF;
+    --gray-light: #F5F5F5;
+
+    --border-radius-lg: 40px;
+    --border-radius-md: 24px;
+    --border-radius-sm: 16px;
+
+    --font-main: 'Inter', sans-serif;
+}
+
+/* Базовые сбросы */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text);
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Заголовки страниц (общие) */
+.page-title {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--text);
+}
+
+.page-subtitle {
+    font-size: 24px;
+    color: #666;
+    margin-bottom: 40px;
+}

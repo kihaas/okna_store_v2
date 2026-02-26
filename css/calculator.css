@@ -1,0 +1,89 @@
+/* ========== calculator.css ========== */
+/* Калькулятор */
+
+.calculator-card {
+    background: white;
+    border-radius: var(--border-radius-lg);
+    padding: 40px;
+    max-width: 800px;
+    margin: 40px auto;
+}
+
+.calculator-title {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.calculator-form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.full-width {
+    grid-column: span 2;
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.option-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.calculator-result {
+    background: var(--bg-color);
+    border-radius: var(--border-radius-md);
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.result-price {
+    display: flex;
+    flex-direction: column;
+}
+
+.result-label {
+    font-size: 18px;
+    color: #666;
+}
+
+.result-value {
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.result-btn {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 18px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.result-btn:hover {
+    opacity: 0.9;
+}
