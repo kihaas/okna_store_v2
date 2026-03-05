@@ -6,7 +6,7 @@ const products = [
         type: "plastic",
         color: "white",
         price: 15900,
-        image: "images/window-1.jpg",
+        image: "images/window-6.jpg",
         description: "Двухкамерный стеклопакет, 70 мм профиль"
     },
     {
@@ -15,7 +15,7 @@ const products = [
         type: "plastic",
         color: "brown",
         price: 17500,
-        image: "images/window-2.jpg",
+        image: "images/window-7.jpg",
         description: "Ламинация под дерево, энергосберегающее"
     },
     {
@@ -33,7 +33,7 @@ const products = [
         type: "aluminum",
         color: "black",
         price: 34500,
-        image: "images/window-1.jpg",
+        image: "images/window-8.jpg",
         description: "Теплый алюминий, терморазрыв"
     },
     {
